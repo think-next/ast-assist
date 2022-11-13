@@ -1,6 +1,7 @@
 package ast_assist
 
 import (
+	"fmt"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -11,7 +12,7 @@ import (
 var src = `
 package main
 
-var a string = live[0].shows.list[1]
+var a string = live[0].shows.list["dd"]
 `
 
 func TestName(t *testing.T) {
@@ -24,8 +25,10 @@ func TestName(t *testing.T) {
 	ast.Inspect(fNode, func(node ast.Node) bool {
 		switch n := node.(type) {
 		case *ast.IndexExpr:
-			x := n.X
-			i := n.Index
+			// x := n.X
+			// i := n.Index
+			r := GetIndexExprStr(n)
+			fmt.Printf("%v", r)
 		}
 		return true
 	})

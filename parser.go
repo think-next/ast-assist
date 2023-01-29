@@ -15,7 +15,7 @@ import (
 type CodeParser struct {
 	fileSet  *token.FileSet
 	fileNode *ast.File
-	buf      *bytes.Buffer
+	buf      *bytes.Buffer		// 
 	file     string
 }
 
